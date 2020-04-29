@@ -27,5 +27,5 @@ test-coverage:
 dep:
 	@go mod download
 
-build: dep ## Build the binary file
+build-project: dep ## Build the binary file
 	@go build -i -o build/main $(PKG)
