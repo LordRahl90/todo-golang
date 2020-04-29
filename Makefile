@@ -12,13 +12,14 @@ run:
 	docker-compose -f .docker/docker-compose.yml up
 
 test:
-	@go test ./...
+	@go test ${PKG}...
 
 lint:
-	@golint -set_exit_status ${PKG_LIST}
+	@go fmt ${PKG}...
+	@go vet ${PKG}...
 
 vet:
-	@go vet ${PKG_LIST}
+	@go vet ${PKG_LIST}...
 
 test-coverage:
 	@go test -short -coverprofile cover.out -covermode=atomic ${PKG_LIST}
