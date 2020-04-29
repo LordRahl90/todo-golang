@@ -1,0 +1,30 @@
+version: "3"
+services:
+  todo_app:
+    image: lordrahl/todo-app
+    container_name: "todo_app"
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+    networks:
+      - todo-network
+    restart: always
+
+  database:
+    image: mysql:5.7
+    container_name: "todo_db"
+    env_file: ./mysql.env
+    ports:
+      - 33064:3306
+    volumes:
+      - todo-db-volume:/var/lib/mysql
+    networks:
+      - todo-network
+
+networks:
+  todo-network:
+    driver: bridge
+
+volumes:
+  todo-db-volume:
