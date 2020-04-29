@@ -6,3 +6,6 @@ push:
 
 run:
 	docker-compose -f .docker/docker-compose.yml up
+
+test:
+	go test ./...

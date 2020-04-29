@@ -8,8 +8,9 @@ import (
 	"todo-app/services/database"
 
 	"github.com/gin-gonic/gin"
-	_ "github.com/go-sql-driver/mysql"
 	"github.com/joho/godotenv"
+
+	_ "github.com/go-sql-driver/mysql"
 )
 
 //Server - houses the server elements
