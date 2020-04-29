@@ -17,32 +17,32 @@ jobs:
         run: |
           make lint
 
-    test:
-      name: Test
-      runs-on: ubuntu-latest
-      steps:
-        - name: "Setup Go"
-          uses: actions/setup-go@v1
-          with:
-            go-version: 1.12
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Setup Go"
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.12
 
-        - name: "Checkout Code"
-          uses: actions/checkout@v1
+      - name: "Checkout Code"
+        uses: actions/checkout@v1
 
-        - name: "Run Unit Tests"
-          run: make test-coverage
+      - name: "Run Unit Tests"
+        run: make test-coverage
 
-    build:
-      name: Build
-      runs-on: ubuntu-latest
-      steps:
-        - name: "Setup Go"
-          uses: actions/setup-go@v1
-          with:
-            go-version: 1.12
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Setup Go"
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.12
 
-        - name: "Checkout Code"
-          uses: actions/checkout@v1
+      - name: "Checkout Code"
+        uses: actions/checkout@v1
 
-        - name: "Build Artifact"
-          run: make build
+      - name: "Build Artifact"
+        run: make build
