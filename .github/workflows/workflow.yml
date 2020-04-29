@@ -1,0 +1,48 @@
+on: push
+name: Todo API Workflow
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Setup Go"
+        uses: actions/setup-go/@v1
+        with:
+          go-version: 1.12
+
+      - name: "Checkout Code"
+        uses: actions/checkout@v1
+
+      - name: "Lint Code"
+        run: |
+          make lint
+
+    test:
+      name: Test
+      runs-on: ubuntu-latest
+      steps:
+        - name: "Setup Go"
+          uses: actions/setup-go@v1
+          with:
+            go-version: 1.12
+
+        - name: "Checkout Code"
+          uses: actions/checkout@v1
+
+        - name: "Run Unit Tests"
+          run: make test-coverage
+
+    build:
+      name: Build
+      runs-on: ubuntu-latest
+      steps:
+        - name: "Setup Go"
+            uses: actions/setup-go@v1
+            with:
+              go-version: 1.12
+
+        - name: "Checkout Code"
+          uses: actions/checkout@v1
+
+        - name: "Build Artifact"
+          run: make build
